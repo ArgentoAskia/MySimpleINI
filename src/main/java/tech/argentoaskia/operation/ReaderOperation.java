@@ -5,7 +5,7 @@ import tech.argentoaskia.models.interfaces.DocumentItem;
 import tech.argentoaskia.models.interfaces.KeyValueItem;
 import tech.argentoaskia.models.interfaces.SessionItem;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public interface ReaderOperation extends Operation{
     /**
@@ -41,20 +41,32 @@ public interface ReaderOperation extends Operation{
      * @return 返回节点
      */
     <S> SessionItem<S> getSession(S sessionName);
-    
+
+    /**
+     * 根据下标来获取一个节点
+     * @param index 下标，从0开始
+     * @param <S> 节点名称的类型
+     * @return 返回节点
+     */
     <S> SessionItem<S> getSession(int index);
 
-
-    <S> HashMap<S, SessionItem<S>> getSessions(S ...sessionNames);
-    <S> SessionItem<S>[] getAllSessions();
+    /**
+     * 获取部分节点，改方法会多次调用{@link ReaderOperation#getSession(S)}
+     * @param sessionNames 多个节点名字
+     * @param <S> 节点名称的类型
+     * @return 一个Map，用于存储节点
+     * @see ReaderOperation#getSession(S)
+     */
+    <S> Map<S, SessionItem<S>> getSessions(S ...sessionNames);
+    SessionItem<?>[] getAllSessions();
 
     <S, K> KeyValueItem<K> getKey(SessionItem<S> targetSession, int index);
     <S, K> KeyValueItem<K> getKey(S targetSessionName, int index);
     <S, K> KeyValueItem<K> getKey(S targetSessionName, K Key);
     <S, K> KeyValueItem<K> getKey(SessionItem<S> targetSession, K Key);
-    <S, K> KeyValueItem<K>[] getKeys(SessionItem<S> targetSession);
-    <S, K> KeyValueItem<K>[] getKeys(S targetSessionName);
-    <K> KeyValueItem<K>[] getAllKeys();
+    <S> KeyValueItem<?>[] getKeys(SessionItem<S> targetSession);
+    <S> KeyValueItem<?>[] getKeys(S targetSessionName);
+    KeyValueItem<?>[] getAllKeys();
 
     <D> DocumentItem<D> getDocument();
 
