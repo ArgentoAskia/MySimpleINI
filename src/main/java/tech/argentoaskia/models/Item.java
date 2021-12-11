@@ -60,4 +60,6 @@ public interface Item<T> {
     default String getItemTypeName(){
         return "Item";
     }
+
+    Object output();
 }
