@@ -48,6 +48,8 @@ public interface Item<T> {
      */
     T get();
 
+    Object output(Object ...params);
+
     /**
      * 以字符串的形式获取该元素的元素类型名称.
      * <p>
@@ -61,5 +63,8 @@ public interface Item<T> {
         return "Item";
     }
 
-    Object output();
+    default Object output(){
+        return output(null);
+    }
+
 }
