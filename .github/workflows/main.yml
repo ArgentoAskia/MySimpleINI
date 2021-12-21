@@ -34,7 +34,7 @@ jobs:
         dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
         dst_token: ${{ secrets.GITEE_TOKEN }}
         # Destination name. Such as `gitee/kunpengcompute`.
-        dst: gitee/ArgentoAskia
+        dst: gitee/Askia
         # Source name. Such as `github/kunpengcompute`.
         src: github/ArgentoAskia
         # The account type. Such as org, user.
