@@ -48,8 +48,6 @@ public interface Item<T> {
      */
     T get();
 
-    Object output(Object ...params);
-
     /**
      * 以字符串的形式获取该元素的元素类型名称.
      * <p>
@@ -61,10 +59,6 @@ public interface Item<T> {
     @Deprecated(since = "1.0")
     default String getItemTypeName(){
         return "Item";
-    }
-
-    default Object output(){
-        return output(null);
     }
 
 }
