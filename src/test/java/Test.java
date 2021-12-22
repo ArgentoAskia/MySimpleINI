@@ -12,4 +12,5 @@ public class Test<T> {
         Test<Integer> test = new Test<>(123456);
         System.out.println(test.getT());
     }
+
 }
